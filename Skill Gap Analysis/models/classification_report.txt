@@ -1,0 +1,43 @@
+============================================================
+ SKILL GAP ANALYSIS - MODEL TRAINING REPORT
+ Generated: 2026-07-04 10:59:57
+============================================================
+
+Best Model: Random Forest
+
+--- Model Comparison ---
+                Accuracy  Precision    Recall  F1-Score
+Random Forest   0.820513   0.823145  0.820513  0.820912
+SVM (Linear)    0.811966   0.817324  0.811966  0.814158
+Multinomial NB  0.811966   0.818480  0.811966  0.812564
+
+--- Detailed Classification Report (Best Model) ---
+                        precision    recall  f1-score   support
+
+  BUSINESS-DEVELOPMENT       0.65      0.67      0.66        48
+               FINANCE       0.96      0.94      0.95        47
+                    HR       1.00      0.91      0.95        44
+INFORMATION-TECHNOLOGY       0.87      0.96      0.91        48
+                 SALES       0.65      0.64      0.65        47
+
+              accuracy                           0.82       234
+             macro avg       0.83      0.82      0.82       234
+          weighted avg       0.82      0.82      0.82       234
+
+
+--- Category-Skill Mapping (Top 10 per category) ---
+
+[HR]:
+  communication, problem solving, employee relations, adaptability, teamwork, interpersonal skills, attention to detail, performance management, data analysis, leadership
+
+[INFORMATION-TECHNOLOGY]:
+  communication, problem solving, adaptability, teamwork, collaboration, project management, leadership, customer service, time management, attention to detail
+
+[SALES]:
+  communication, problem solving, teamwork, adaptability, customer service, sales, time management, relationship building, customer relationship management, product knowledge
+
+[FINANCE]:
+  communication, problem solving, teamwork, financial analysis, adaptability, leadership, collaboration, financial reporting, data analysis, attention to detail
+
+[BUSINESS-DEVELOPMENT]:
+  communication, problem solving, adaptability, business development, relationship building, teamwork, time management, sales, negotiation, data analysis

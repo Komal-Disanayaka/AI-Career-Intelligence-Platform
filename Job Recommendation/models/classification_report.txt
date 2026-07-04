@@ -1,0 +1,22 @@
+============================================================
+ JOB RECOMMENDATION - MODEL TRAINING REPORT
+ Generated: 2026-07-04 10:58:41
+============================================================
+
+Best Model: Random Forest
+
+--- Model Comparison ---
+                     Accuracy  Precision    Recall  F1-Score
+Random Forest          1.0000   1.000000  1.000000  1.000000
+Gradient Boosting      1.0000   1.000000  1.000000  1.000000
+Logistic Regression    0.9955   0.990184  0.987202  0.988691
+
+--- Detailed Classification Report (Best Model) ---
+                 precision    recall  f1-score   support
+
+Not Recommended       1.00      1.00      1.00     16015
+    Recommended       1.00      1.00      1.00      3985
+
+       accuracy                           1.00     20000
+      macro avg       1.00      1.00      1.00     20000
+   weighted avg       1.00      1.00      1.00     20000
