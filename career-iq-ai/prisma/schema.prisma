@@ -1,8 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -10,4 +8,90 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+}
+
+// ============================================
+// User Model
+// ============================================
+model User {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  password          String
+  name              String?
+  age               Int?
+  gender            String?
+  education         String?
+  university        String?
+  degree            String?
+  skills            String?  // Comma-separated skills
+  experience        Int?     // Years of experience
+  preferredIndustry String?
+  preferredCountry  String?
+  resumeUrl         String?
+  profilePhoto      String?
+  profileComplete   Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  jobRecommendations JobRecommendation[]
+  salaryPredictions  SalaryPrediction[]
+  skillGapAnalyses   SkillGapAnalysis[]
+  careerReports      CareerReport[]
+}
+
+// ============================================
+// Job Recommendation Results
+// ============================================
+model JobRecommendation {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skills     String
+  education  String?
+  experience Int?
+  location   String?
+  industry   String?
+  results    Json     // Stored as JSON array of recommended jobs
+  createdAt  DateTime @default(now())
+}
+
+// ============================================
+// Salary Prediction Results
+// ============================================
+model SalaryPrediction {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobTitle   String
+  experience Int?
+  education  String?
+  location   String?
+  skills     String?
+  result     Json     // Predicted salary data
+  createdAt  DateTime @default(now())
+}
+
+// ============================================
+// Skill Gap Analysis Results
+// ============================================
+model SkillGapAnalysis {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  desiredJob    String
+  currentSkills String
+  result        Json     // Analysis results
+  createdAt     DateTime @default(now())
+}
+
+// ============================================
+// Combined AI Career Report
+// ============================================
+model CareerReport {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reportData Json     // Combined report data
+  createdAt  DateTime @default(now())
 }
